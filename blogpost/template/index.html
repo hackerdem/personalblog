@@ -8,7 +8,12 @@
 
         <h2><a href="#">{{post.title}}</a></h2>
         <h5><span class="glyphicon glyphicon-time"></span> Post by {{post.author}} {{post.publish.month}}/{{post.publish.day}}/{{post.publish.year}} at {{post.publish.time}}</h5>
-        <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
+        <h5>
+        {% for tag in post.tags.all %}
+        <span class="label label-danger">{{tag}}</span>
+        <!--<h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>-->
+        {% endfor %}
+        </h5>
         <h4><p class="text-justify">{{post.body|truncatewords:50}}</p></h4>
         <br><br>
     </a>
