@@ -5,9 +5,10 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 # Create your views here.
 
 def search_results(request):
-    text_search=request.POST.get('searchtext', None)
-    posts=Post.objects.filter(body_text__search=text_search)
-    return render(request,'contact.html',{'posts':posts})
+    text_search=request.GET.get('query')
+    
+    posts=Post.objects.filter(body__icontains=text_search)
+    return render(request,'index.html',{'posts':posts})
     
 def post_detail(request,year,month,day,post):
     post=get_object_or_404(Post,slug=post,

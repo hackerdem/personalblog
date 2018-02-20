@@ -24,7 +24,7 @@
         <div class="container">
                 
             <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-8">
             
             </div><!-- /col-sm-12 -->
             </div><!-- /row -->
@@ -53,7 +53,16 @@
         {% empty %}
         <p> There are no comments yet. </p>
         {% endfor %}
-        
+        <h4>Leave a Comment:</h4>
+      <form role="form">
+        <div class="form-group">
+          <textarea class="form-control" rows="1" required placeholder="Enter your name please"></textarea>
+          <br>
+          <textarea class="form-control" rows="3" required placeholder="Enter your comment please"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+      <br><br>
 </div>
 
 
