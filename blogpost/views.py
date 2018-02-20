@@ -1,19 +1,26 @@
 from django.shortcuts import render,get_object_or_404
 from django.views.generic import ListView
-from .models import Post
+from .models import Post,Comment
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 # Create your views here.
 
-
+def search_results(request):
+    text_search=request.POST.get('searchtext', None)
+    posts=Post.objects.filter(body_text__search=text_search)
+    return render(request,'contact.html',{'posts':posts})
+    
 def post_detail(request,year,month,day,post):
     post=get_object_or_404(Post,slug=post,
                            status='published',
                            publish__year=year,
                            publish__month=month,
-                           publish__day=day)
+                           publish__day=day,
+                           )
+    comments=post.comments.filter(active=True)
     return render(request,'post_detail.html',
-    {'post':post}
-    )
+    {'post':post,
+    'comments':comments,
+    })
     
 def index(request):
     posts=Post.objects.all()

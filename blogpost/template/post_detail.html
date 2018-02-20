@@ -17,10 +17,44 @@
         <h4><p class="text-justify">{{post.body}}</p></h4>
         <br><br>
     </a>
-<h2>
+</h2>
+<h3>Comments</h3>
+        {% for comment in comments%}
+        
+        <div class="container">
+                
+            <div class="row">
+            <div class="col-sm-12">
+            
+            </div><!-- /col-sm-12 -->
+            </div><!-- /row -->
+            <div class="row">
+            <div class="col-sm-1">
+            <div class="thumbnail">
+            <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+            </div><!-- /thumbnail -->
+            </div><!-- /col-sm-1 -->
+            
+            <div class="col-sm-7">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+            <strong>{{comment.name}}</strong> <span class="text-muted">commented {{comment.created}}</span>
+            </div>
+            <div class="panel-body">
+                {{comment.body|linebreaks}}
+            </div><!-- /panel-body -->
+            </div><!-- /panel panel-default -->
+            </div><!-- /col-sm-5 -->
+            </div><!-- /row -->
+            
+            </div><!-- /container -->
+        
+        
+        {% empty %}
+        <p> There are no comments yet. </p>
+        {% endfor %}
+        
 </div>
-
-
 
 
 {% endblock %}
