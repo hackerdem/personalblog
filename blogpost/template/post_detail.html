@@ -53,16 +53,23 @@
         {% empty %}
         <p> There are no comments yet. </p>
         {% endfor %}
+        {% if new_comment %}
+        <h2>Add a new comment </h2>
+        {% else %}
         <h4>Leave a Comment:</h4>
-      <form role="form">
+      <form action="." method='post' role="form">
+          {% csrf_token %}
         <div class="form-group">
-          <textarea class="form-control" rows="1" required placeholder="Enter your name please"></textarea>
+          <textarea name='name' class="form-control" rows="1" required placeholder="Enter your name please"></textarea>
           <br>
-          <textarea class="form-control" rows="3" required placeholder="Enter your comment please"></textarea>
+          <textarea name='email' class="form-control" rows="1" required placeholder="Enter your Email please"></textarea>
+          <br>
+          <textarea name='body' class="form-control" rows="3" required placeholder="Enter your comment please"></textarea>
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
       </form>
       <br><br>
+      {% endif %}
 </div>
 
 
